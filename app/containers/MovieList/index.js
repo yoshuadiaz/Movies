@@ -17,6 +17,12 @@ import reducer from "./reducer"
 import saga from "./saga"
 import Actions from "./actions"
 import MovieListItem from "components/MovieListItem/Loadable"
+import styled from "styled-components"
+
+const MovieListStyled = styled.div`
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+`
 
 /* eslint-disable react/prefer-stateless-function */
 export class MovieList extends React.Component {
@@ -28,10 +34,17 @@ export class MovieList extends React.Component {
       movieList: { isLoading, items, hasError }
     } = this.props
     return (
-      <div>
+      <MovieListStyled>
+        {isLoading && <h2>Loading...</h2>}
+        {hasError && (
+          <div>
+            <h2>Error</h2>
+            <p>Ocurrio un error</p>
+          </div>
+        )}
         {items.length > 0 &&
           items.map(item => <MovieListItem key={item.name} data={item} />)}
-      </div>
+      </MovieListStyled>
     )
   }
 }
