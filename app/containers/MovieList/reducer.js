@@ -19,7 +19,6 @@ export const initialState = fromJS({
 
 const loadItemFetchMutation = state => state.set("isLoading", true)
 const loadItemSuccessMutation = (state, action) => {
-  console.log(action)
   return state.set("isLoading", false).set("items", action.payload)
 }
 const loadItemFailureMutation = state =>

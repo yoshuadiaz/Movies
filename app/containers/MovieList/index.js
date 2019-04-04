@@ -16,6 +16,7 @@ import makeSelectMovieList from "./selectors"
 import reducer from "./reducer"
 import saga from "./saga"
 import Actions from "./actions"
+import MovieListItem from "components/MovieListItem/Loadable"
 
 /* eslint-disable react/prefer-stateless-function */
 export class MovieList extends React.Component {
@@ -28,7 +29,8 @@ export class MovieList extends React.Component {
     } = this.props
     return (
       <div>
-        <pre>{JSON.stringify({ isLoading, items, hasError }, null, 2)}</pre>
+        {items.length > 0 &&
+          items.map(item => <MovieListItem key={item.name} data={item} />)}
       </div>
     )
   }
