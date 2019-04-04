@@ -22,6 +22,14 @@ import styled from "styled-components"
 const MovieListStyled = styled.div`
   display: grid;
   grid-template-columns: 33% 33% 33%;
+
+  @media only screen and (max-width: 1200px) {
+    grid-template-columns: 48% 48%;
+  }
+
+  @media only screen and (max-width: 870px) {
+    grid-template-columns: 100%;
+  }
 `
 
 /* eslint-disable react/prefer-stateless-function */
